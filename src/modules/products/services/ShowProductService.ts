@@ -3,8 +3,12 @@ import { Product } from '../typeorm/entities/Product';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 
+interface IProduct {
+  id: string;
+}
+
 class ShowProductService {
-  public async execute(id: string): Promise<Product | undefined> {
+  public async execute({ id }: IProduct): Promise<Product | undefined> {
     const repository = getCustomRepository(ProductRepository);
 
     const product = await repository.findOne(id);
