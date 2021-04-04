@@ -1,0 +1,7 @@
+node_modules/
+
+# Arquivo de variáveis de ambiente
+.env
+
+# Arquivo de variáveis de ambiente do typeorm
+ormconfig.env
