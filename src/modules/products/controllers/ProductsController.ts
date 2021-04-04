@@ -19,7 +19,7 @@ export default class ProductsController {
 
     const show = new ShowProductService();
 
-    const product = show.execute({ id });
+    const product = await show.execute({ id });
 
     return response.status(200).json(product);
   }
