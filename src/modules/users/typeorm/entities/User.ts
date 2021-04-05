@@ -24,5 +24,5 @@ export class User {
   created_at: Date;
 
   @UpdateDateColumn()
-  udpated_at: Date;
+  updated_at: Date;
 }
