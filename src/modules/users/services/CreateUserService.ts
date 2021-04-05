@@ -11,19 +11,16 @@ interface IUser {
 }
 
 class CreateUserService {
-  public async execute({
-    name,
-    email,
-    password,
-  }: IUser): Promise<User | undefined> {
+  public async execute({ name, email, password }: IUser): Promise<User> {
     const repository = getCustomRepository(UserRepository);
+
     const userExists = await repository.findByEmail(email);
 
-    if (userExists) throw new AppError('Email already in use');
+    if (userExists) throw new AppError('This email are already in use');
 
     const hashedPassword = await hash(password, 8);
 
-    const user = await repository.create({
+    const user = repository.create({
       name,
       email,
       password: hashedPassword,
