@@ -1,5 +1,5 @@
 import AppError from '@shared/errors/AppError';
-import { CreateDateColumn, getCustomRepository } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 import { UserRepository } from '../typeorm/repositories/UserRepository';
 import { compare } from 'bcryptjs';
 import { User } from '../typeorm/entities/User';
