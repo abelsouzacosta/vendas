@@ -6,6 +6,9 @@ import AppError from '../errors/AppError';
 import { errors } from 'celebrate';
 import router from './routes/';
 import '@shared/typeorm';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
@@ -32,4 +35,4 @@ app.use(
   },
 );
 
-app.listen(3030);
+app.listen(process.env.PORT);

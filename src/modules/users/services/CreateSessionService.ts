@@ -1,6 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import { UserRepository } from '../typeorm/repositories/UserRepository';
+import { sign } from 'jsonwebtoken';
 import { compare } from 'bcryptjs';
 import { User } from '../typeorm/entities/User';
 
