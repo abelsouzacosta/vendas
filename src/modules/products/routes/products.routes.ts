@@ -23,7 +23,7 @@ productRouter.post(
     [Segments.BODY]: {
       name: Joi.string().required(),
       price: Joi.number().required(),
-      quatity: Joi.number().required(),
+      quantity: Joi.number().required(),
     },
   }),
   controller.create,
