@@ -4,14 +4,20 @@ import { UserRepository } from '../typeorm/repositories/UserRepository';
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcryptjs';
 import { User } from '../typeorm/entities/User';
+import authConfig from '@config/auth';
 
 interface IRequest {
   email: string;
   password: string;
 }
 
+interface IResponse {
+  user: User;
+  token: string;
+}
+
 class CreateSessionService {
-  public async execute({ email, password }: IRequest): Promise<User> {
+  public async execute({ email, password }: IRequest): Promise<IResponse> {
     const repository = getCustomRepository(UserRepository);
 
     const user = await repository.findByEmail(email);
@@ -22,7 +28,15 @@ class CreateSessionService {
 
     if (!passwordCorrect) throw new AppError('Password incorrect');
 
-    return user;
+    const token = sign({}, String(authConfig.jwt.secret), {
+      expiresIn: 86400,
+      subject: user.id,
+    });
+
+    return {
+      user,
+      token,
+    };
   }
 }
 
