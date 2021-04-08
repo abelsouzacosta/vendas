@@ -1,8 +1,9 @@
 import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
-import cors from 'cors';
 import 'express-async-errors';
+import cors from 'cors';
 import AppError from '../errors/AppError';
+import { errors } from 'celebrate';
 import router from './routes/';
 import '@shared/typeorm';
 
@@ -11,6 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(router);
+
+app.use(errors());
 
 // middleware de erros da aplicação
 app.use(
