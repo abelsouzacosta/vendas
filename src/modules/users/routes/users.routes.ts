@@ -2,10 +2,10 @@ import { Router } from 'express';
 import UsersController from '../controllers/UsersController';
 
 const userRouter = Router();
-const userController = new UsersController();
+const controller = new UsersController();
 
-userRouter.get('/', userController.index);
+userRouter.get('/', controller.index);
 
-userRouter.post('/', userController.create);
+userRouter.post('/', controller.create);
 
 export default userRouter;
