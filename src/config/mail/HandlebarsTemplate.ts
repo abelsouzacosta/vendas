@@ -12,7 +12,7 @@ interface IParseMailTemplate {
 
 export default class HandlebarsTemplate {
   public async parse({ file, variables }: IParseMailTemplate): Promise<string> {
-    const templateFile = fs.promises.readFile(file, {
+    const templateFile = await fs.promises.readFile(file, {
       encoding: 'utf-8',
     });
 
