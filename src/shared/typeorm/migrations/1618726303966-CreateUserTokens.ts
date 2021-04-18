@@ -26,6 +26,7 @@ export class CreateUserTokens1618726303966 implements MigrationInterface {
           {
             name: 'is_used',
             type: 'boolean',
+            isNullable: true,
           },
           {
             name: 'created_at',
