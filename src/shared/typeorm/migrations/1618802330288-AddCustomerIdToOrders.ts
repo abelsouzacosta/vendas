@@ -22,7 +22,7 @@ export class AddCustomerIdToOrders1618802330288 implements MigrationInterface {
         name: 'OrdersCustomer',
         columnNames: ['customer_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'orders',
+        referencedTableName: 'customers',
       }),
     );
   }

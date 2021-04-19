@@ -30,17 +30,18 @@ export default class CreateOrderService {
       ProductRepository,
     );
 
-    // verifica se o usuário existe
     const customer = await customerRepository.findById(customer_id);
 
     if (!customer) throw new AppError('Customer not found');
 
+    // método findAllByIds retorna todas as instâncias encontradas
+    // dentro do banco de dados da aplicação
     const existsProducts = await productRepository.findAllByIds(products);
 
+    // se nenhuma instancia foi encontrada
     if (!existsProducts.length)
-      throw new AppError('Couldnt find any products with given ids');
+      throw new AppError('Could not found any product with given ids');
 
-    // pega somente os produtos retornados
     const existsProductsIds = existsProducts.map(product => product.id);
 
     // compara existsProductsIds com o array de elementos products

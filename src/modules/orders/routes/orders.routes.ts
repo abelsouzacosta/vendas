@@ -16,4 +16,14 @@ orderRouter.post(
   controller.create,
 );
 
+orderRouter.get(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      id: Joi.string().required(),
+    }),
+  }),
+  controller.index,
+);
+
 export default orderRouter;

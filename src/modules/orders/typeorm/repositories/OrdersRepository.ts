@@ -17,7 +17,7 @@ interface IRequest {
 export class OrdersRepository extends Repository<Order> {
   public async findById(id: string): Promise<Order | undefined> {
     const order = this.findOne(id, {
-      relations: ['orders_products', 'customers'],
+      relations: ['orders_products', 'customer'],
     });
 
     return order;
@@ -28,6 +28,8 @@ export class OrdersRepository extends Repository<Order> {
       customer,
       orders_products: products,
     });
+
+    await this.save(order);
 
     return order;
   }
