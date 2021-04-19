@@ -5,6 +5,8 @@ import { Joi, celebrate, Segments } from 'celebrate';
 const customerRouter = Router();
 const controller = new CustomerController();
 
+customerRouter.get('/', controller.index);
+
 customerRouter.post(
   '/',
   celebrate({
