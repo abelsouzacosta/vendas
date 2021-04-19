@@ -35,6 +35,12 @@ export class OrdersProducts {
   @Column()
   product_id: string;
 
+  @Column('decimal')
+  price: number;
+
+  @Column('int')
+  quantity: number;
+
   @CreateDateColumn()
   created_at: Date;
 
