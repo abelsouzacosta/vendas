@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import CreateCustomerService from '../services/CreateCustomerService';
+import DeleteCustomerService from '../services/DeleteCustomerService';
 import ListCustomerService from '../services/ListCustomersService';
 import UdpateCustomerService from '../services/UpdateCustomerService';
 
@@ -31,5 +32,15 @@ export default class CustomerController {
     const customer = await update.execute({ id, name, email });
 
     return response.status(200).json(customer);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const delete_customer = new DeleteCustomerService();
+
+    await delete_customer.execute({ id });
+
+    return response.status(200).json([]);
   }
 }

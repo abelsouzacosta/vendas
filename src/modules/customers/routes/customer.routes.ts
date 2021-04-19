@@ -33,4 +33,14 @@ customerRouter.put(
   controller.update,
 );
 
+customerRouter.delete(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      id: Joi.string().required(),
+    }),
+  }),
+  controller.delete,
+);
+
 export default customerRouter;
