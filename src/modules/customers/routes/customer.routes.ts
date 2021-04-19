@@ -18,4 +18,19 @@ customerRouter.post(
   controller.create,
 );
 
+customerRouter.put(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      id: Joi.string().required(),
+    }),
+
+    [Segments.BODY]: {
+      name: Joi.string(),
+      email: Joi.string(),
+    },
+  }),
+  controller.update,
+);
+
 export default customerRouter;
