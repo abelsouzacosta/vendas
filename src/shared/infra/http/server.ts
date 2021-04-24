@@ -8,11 +8,17 @@ import router from './routes/';
 import '@shared/infra/typeorm';
 import '@shared/container';
 import 'dotenv/config';
+import uploadConfig from '@config/upload';
+import rateLimiter from '@shared/infra/http/middlewares/rateLimiter';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use(rateLimiter);
+
+app.use('/files', express.static(uploadConfig.directory));
 app.use(router);
 
 app.use(errors());
