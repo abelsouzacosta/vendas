@@ -1,5 +1,4 @@
 import AppError from '@shared/errors/AppError';
-import { getCustomRepository } from 'typeorm';
 import { ICustomerDelete } from '../domain/models/ICustomerDelete';
 import { CustomerRepository } from '../infra/typeorm/repositories/CustomerRepository';
 import { inject, injectable } from 'tsyringe';
