@@ -1,6 +1,4 @@
 import AppError from '@shared/errors/AppError';
-import { getCustomRepository } from 'typeorm';
-import { CustomerRepository } from '../infra/typeorm/repositories/CustomerRepository';
 import { ICustomerUpdate } from '../domain/models/ICustomerUpdate';
 import { ICustomer } from '../domain/models/ICustomer';
 import { ICustomerRepository } from '../domain/repositories/ICustomersRepository';
