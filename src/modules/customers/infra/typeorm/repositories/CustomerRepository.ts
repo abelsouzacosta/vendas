@@ -43,6 +43,8 @@ export class CustomerRepository implements ICustomerRepository {
   public async create({ name, email }: ICustomerCreate): Promise<Customer> {
     const customer = this.ormRepository.create({ name, email });
 
+    await this.ormRepository.save(customer);
+
     return customer;
   }
 
