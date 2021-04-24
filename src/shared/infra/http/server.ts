@@ -6,6 +6,7 @@ import AppError from '../../errors/AppError';
 import { errors } from 'celebrate';
 import router from './routes/';
 import '@shared/infra/typeorm';
+import '@shared/container';
 import 'dotenv/config';
 
 const app = express();

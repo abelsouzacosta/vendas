@@ -1,21 +1,24 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import { CustomerRepository } from '../infra/typeorm/repositories/CustomerRepository';
-import { Customer } from '../infra/typeorm/entities/Customer';
+import { ICustomerUpdate } from '../domain/models/ICustomerUpdate';
+import { ICustomer } from '../domain/models/ICustomer';
+import { ICustomerRepository } from '../domain/repositories/ICustomersRepository';
+import { injectable, inject } from 'tsyringe';
 
-interface IRequest {
-  id: string;
-  name?: string;
-  email?: string;
-}
-
+@injectable()
 export default class UdpateCustomerService {
-  public async execute({ id, name, email }: IRequest): Promise<Customer> {
-    const repository: CustomerRepository = getCustomRepository(
-      CustomerRepository,
-    );
+  constructor(
+    @inject('CustomerRepository')
+    private customerRepository: ICustomerRepository,
+  ) {}
 
-    const customer = await repository.findById(id);
+  public async execute({
+    id,
+    name,
+    email,
+  }: ICustomerUpdate): Promise<ICustomer> {
+    const customer = await this.customerRepository.findById(id);
 
     if (!customer) throw new AppError('This customer does not exists');
 
@@ -23,7 +26,7 @@ export default class UdpateCustomerService {
 
     // verifica se o campo email foi preenchido
     if (email) {
-      const customerByEmail = await repository.findByEmail(email);
+      const customerByEmail = await this.customerRepository.findByEmail(email);
 
       // verifica se o email já está sendo utilizado
       if (customerByEmail && customerByEmail.id !== customer.id)
@@ -39,7 +42,7 @@ export default class UdpateCustomerService {
       customer.name = name;
     }
 
-    await repository.save(customer);
+    await this.customerRepository.save(customer);
 
     return customer;
   }
