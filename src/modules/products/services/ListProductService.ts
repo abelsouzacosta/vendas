@@ -1,5 +1,5 @@
-import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
-import { Product } from '../typeorm/entities/Product';
+import { ProductRepository } from '../infra/typeorm/repositories/ProductsRepository';
+import { Product } from '../infra/typeorm/entities/Product';
 import { getCustomRepository } from 'typeorm';
 import RedisCache from '@shared/cache/RedisCache';
 

@@ -1,7 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
-import { UserTokenRepository } from '../typeorm/repositories/UserTokenRepository';
-import { UserRepository } from '../typeorm/repositories/UserRepository';
+import { UserTokenRepository } from '../infra/typeorm/repositories/UserTokenRepository';
+import { UserRepository } from '../infra/typeorm/repositories/UserRepository';
 import path from 'path';
 import EtherealEmail from '@config/mail/EtherealEmailConfig';
 import 'dotenv/config';

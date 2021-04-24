@@ -1,4 +1,4 @@
-import { Order } from '@modules/orders/typeorm/entities/Orders';
+import { Order } from '@modules/orders/infra/typeorm/entities/Orders';
 import {
   Entity,
   Column,
