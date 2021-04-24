@@ -1,4 +1,4 @@
-import isAuthenticated from '@shared/http/middlewares/isAuthenticated';
+import isAuthenticated from '@shared/infra/http/middlewares/isAuthenticated';
 import { Router } from 'express';
 import UsersController from '../controllers/UsersController';
 import multer from 'multer';
