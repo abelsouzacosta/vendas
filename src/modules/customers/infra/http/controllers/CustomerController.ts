@@ -28,7 +28,7 @@ export default class CustomerController {
     const { id } = request.params;
     const { name, email } = request.body;
 
-    const update = new UdpateCustomerService();
+    const update = container.resolve(UdpateCustomerService);
 
     const customer = await update.execute({ id, name, email });
 
