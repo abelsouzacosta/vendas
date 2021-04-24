@@ -2,10 +2,13 @@ import { ICustomer } from '../models/ICustomer';
 import { ICustomerCreate } from '../models/ICustomerCreate';
 
 export interface ICustomerRepository {
-  // método para encontrar uma instância por nome
+  // encontra todas as instâncias de uma entidade
+  find(): Promise<ICustomer[] | undefined>;
+
+  // método para encontrar uma instância pelo email
   findByEmail(name: string): Promise<ICustomer | undefined>;
 
-  // método para encontrar uma instância por id
+  // método para encontrar uma instância pelo id
   findById(id: string): Promise<ICustomer | undefined>;
 
   // método para encontrar uma instância pelo nome
@@ -16,4 +19,7 @@ export interface ICustomerRepository {
 
   // salva um usuário no banco de dados
   save(customer: ICustomer): Promise<ICustomer>;
+
+  // deleta uma instância do banco de dados
+  remove(customer: ICustomer): Promise<void>;
 }
